@@ -4,34 +4,34 @@ import sys
 # Create a stack class.
 class Stack:
     # Store the collection of elements.
-    elements = []
+    __elements = []
 
     # Initializer.
     def __init__(self):
-        self.elements = []
+        self.__elements = []
 
     # Push an element onto the stack.
     def push(self, element):
-        self.elements.append(element)
+        self.__elements.append(element)
 
     # Pop an elements off the stack.
     def pop(self):
-        num_elements = len(self.elements)
-        element = self.elements[num_elements-1]
-        self.elements.remove(element)
+        num_elements = len(self.__elements)
+        element = self.__elements[num_elements - 1]
+        self.__elements.remove(element)
 
     # Determine if the stack is empty.
     def isEmpty(self):
-        num_elements = len(self.elements)
+        num_elements = len(self.__elements)
         return (num_elements == 0)
 
     # Retrieve the top element of the stack.
     def getTop(self):
-        num_elements = len(self.elements)
-        return self.elements[num_elements-1]
+        num_elements = len(self.__elements)
+        return self.__elements[num_elements - 1]
 
     def toString(self):
-        return str(self.elements) + " " + "size:" + " " + str(len(self.elements))
+        return str(self.__elements) + " " + "size:" + " " + str(len(self.__elements))
 
 # Determine if the permutation is possible given the constraints of the problem.
 def isPermutationPossible(stack, permutation):
@@ -76,28 +76,28 @@ num_elements = input()
 # Continue reading input until a zero is encountered.
 while (num_elements != 0):
     # Initialize the original set of numbers.
-    elements = []
+    __elements = []
     for x in range(1, num_elements+1):
-        elements.append(x)
+        __elements.append(x)
 
     # Initialize the original stack of numbers.
     s_stack = Stack()
-    elements.reverse()
+    __elements.reverse()
     for x in range(0, num_elements):
-        element = elements[x]
+        element = __elements[x]
         s_stack.push(element)
 
     # Determine if computation should continue after reading in the permutation.
-    elements = sys.stdin.readline().split()
-    if (int(elements[0]) == 0):
+    __elements = sys.stdin.readline().split()
+    if (int(__elements[0]) == 0):
         num_elements = input()
         continue
 
     # Store the permutation numbers into another stack.
     p_stack = Stack()
-    elements.reverse()
+    __elements.reverse()
     for x in range(0, num_elements):
-        element = int(elements[x])
+        element = int(__elements[x])
         p_stack.push(element)
 
     # Determine if the permutation is possible.
